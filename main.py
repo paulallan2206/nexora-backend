@@ -1,8 +1,3 @@
-"""
-Nexora v2.0 — FastAPI + Mistral + Supabase
-Adapté aux vraies tables Supabase de Paul Allan Junior MEYE SIKA
-Tables: leads (name,email,phone) | conversations (lead_id,message,sender) | subscribers (email)
-"""
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse, JSONResponse
