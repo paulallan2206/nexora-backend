@@ -895,7 +895,7 @@ footer {
     <p class="cta-sub">Rejoignez les entreprises africaines qui ont choisi Nexora. Démarrez gratuitement, sans carte bancaire.</p>
     <div class="cta-form">
       <input class="cta-input" type="email" placeholder="Votre adresse email">
-      <button class="cta-submit">Démarrer →</button>
+      <button class="cta-submit" onclick="ctaSubscribe()">Démarrer →</button>
     </div>
   </div>
 </section>
@@ -1009,6 +1009,28 @@ async function sendMsg() {
   } catch (err) {
     hideTyping();
     appendMsg('bot', "⚠️ Le serveur Nexora est momentanément indisponible. Contactez-nous au +241 01 44 55 66.");
+  }
+}
+
+async function ctaSubscribe() {
+  const input = document.querySelector('.cta-input');
+  const email = input ? input.value.trim() : '';
+  if (!email || !email.includes('@')) {
+    alert('Veuillez entrer une adresse email valide !');
+    return;
+  }
+  try {
+    const res = await fetch(API_URL + '/subscribe', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({email, plan: 'starter'})
+    });
+    if (res.ok) {
+      if (input) input.value = '';
+      alert('Inscription réussie ! Notre équipe vous contacte sous 24h. 🎉');
+    }
+  } catch(e) {
+    alert('Erreur réseau. Réessayez !');
   }
 }
 
