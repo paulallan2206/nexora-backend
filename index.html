@@ -1019,19 +1019,8 @@ async function ctaSubscribe() {
     alert('Veuillez entrer une adresse email valide !');
     return;
   }
-  try {
-    const res = await fetch(API_URL + '/subscribe', {
-      method: 'POST',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({email, plan: 'starter'})
-    });
-    if (res.ok) {
-      if (input) input.value = '';
-      alert('Inscription réussie ! Notre équipe vous contacte sous 24h. 🎉');
-    }
-  } catch(e) {
-    alert('Erreur réseau. Réessayez !');
-  }
+  // Redirige vers la page d'inscription avec l'email pré-rempli
+  window.location.href = '/register?email=' + encodeURIComponent(email);
 }
 
 // Scroll reveal
