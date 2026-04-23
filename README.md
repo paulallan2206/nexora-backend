@@ -78,32 +78,10 @@ Des milliers de PME en Afrique perdent des clients chaque nuit faute de support 
 
 ## 🏗️ Architecture
 
-```
-┌─────────────────────────────────────────────────────────┐
-│                    NEXORA PLATFORM                       │
-├─────────────────┬───────────────────┬───────────────────┤
-│   Site Vitrine  │  Dashboard Client │  Dashboard Admin  │
-│   index.html    │  dashboard.html   │   admin.html      │
-│   register.html │  login.html       │                   │
-└────────┬────────┴─────────┬─────────┴─────────┬─────────┘
-         │                  │                   │
-         └──────────────────▼───────────────────┘
-                    FastAPI Backend
-                      main.py
-         ┌─────────────────────────────────────┐
-         │           API Routes                │
-         │  /chat  /leads  /subscribe          │
-         │  /auth/register  /auth/login        │
-         │  /client/me  /client/stats          │
-         │  /client/knowledge  /admin/data     │
-         └──────────┬──────────────┬───────────┘
-                    │              │
-          ┌─────────▼──────┐  ┌───▼──────────┐
-          │   Mistral AI   │  │   Supabase   │
-          │  mistral-tiny  │  │  PostgreSQL  │
-          │   (chat IA)    │  │  (données)   │
-          └────────────────┘  └──────────────┘
-```
+![Architecture Nexora](docs/architecture.png)
+
+Architecture SaaS de Nexora basée sur FastAPI, Supabase et Mistral AI.  
+Elle est conçue pour être scalable, modulaire et prête pour le cloud.
 
 ---
 
